@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Journal</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+        <h1 class="greeting">Daily Journal</h1>
+    </header>
+    <main>
+        <form action="description">
+            <fieldset>
+                <label for="conceptscovered">Concepts Covered</label>
+                <textarea name="concepts" id="concepts" cols="60" rows="1"></textarea>
+            </fieldset>
+        </form>
+        <form action="dateinput">
+            <fieldset>
+                <label for="journal date">Date of Entry</label>
+                <input type="date" name="journaldate" id="journaldate">
+            </fieldset>
+        </form>
+        <form action="journalentry">
+            <fieldset>
+                <label for="journaltext">Journal Entry</label>
+                <textarea name="text" id="text" cols="120" rows="15"></textarea>
+            </fieldset>
+        </form>
+        <form action="Mood">
+            <fieldset>
+                <label for="moodinput">Mood for the Day</label>
+                <select name="moodinput" id="moodinput">
+                    <option value="happy">Happy</option>
+                    <option value="sad">Sad</option>
+                    <option value="tired">Tired</option>
+                    <option value="hungry">Hungry</option>
+                </select>
+            </fieldset>
+        </form>
+        <button class="savebtn">Record Journal Entry</button>
+    </main>
+    <aside>
+        <h1 class="entrylog">Previous Entries</h1>
+        <ul class="entrylist">
+            <ul class="entry"></ul>
+            <ul class="entry"></ul>
+            <ul class="entry"></ul>
+            <ul class="entry"></ul>
+            <ul class="entry"></ul>
+        </ul>
+    </aside>
+    <footer class="copyright">&copy; Daily Journal KRN</footer>
+</body>
+
+</html>
