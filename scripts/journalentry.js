@@ -1,10 +1,3 @@
-/*
- *  Purpose: To render a single journal entry as an
- *           HTML representation of the data
- */
-
-
-
 export const JournalEntryComponent = (entryid) => {
     return `
         <section id="entry--${entryid.id}" class="journalEntry">
