@@ -1,3 +1,3 @@
 export const dateFormat = (input) =>{
-    return new Date(input)
+    return input.toDateString()
 }

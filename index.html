@@ -21,12 +21,6 @@
                 <textarea name="concepts" id="concepts" cols="60" rows="1"></textarea>
             </fieldset>
         </form>
-        <form action="dateinput">
-            <fieldset>
-                <label for="journal date">Date of Entry</label>
-                <input type="date" name="journaldate" id="journaldate">
-            </fieldset>
-        </form>
         <form action="journalentry">
             <fieldset>
                 <label for="journaltext">Journal Entry</label>
@@ -44,10 +38,11 @@
                 </select>
             </fieldset>
         </form>
-        <button class="savebtn">Record Journal Entry</button>
+        <button id="savebtn">Record Journal Entry</button>
     </main>
     <aside>
         <h1 class="entrylog">Previous Entries</h1>
+        <div class="newestEntry"></div>
         <div class="entries"></div>
     </aside>
     <footer class="copyright">&copy; Daily Journal KRN</footer>
