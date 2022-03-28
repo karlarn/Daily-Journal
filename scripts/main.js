@@ -2,6 +2,7 @@ import { EntryListComponent } from "./journalentrylists.js";
 import { createPost } from "./journaldata.js";
 import { JournalEntryComponent } from "./journalentry.js"
 import { dateFormat } from "./helper.js"
+import { deletePost } from "./journaldata.js"
 
 
 EntryListComponent()
@@ -23,10 +24,24 @@ document.querySelector("main").addEventListener("click", event => {
 	  }
 		createPost(postObject)
 		.then(()=>{
-			document.querySelector('.newestEntry').innerHTML += `${JournalEntryComponent(postObject)}`
+			document.querySelector('.entries').innerHTML = ``
 			document.querySelector("#concepts").value=''
 	  		document.querySelector("#text").value=''
+			EntryListComponent()
 		})
     }
 
 	})
+
+
+	document.querySelector("aside").addEventListener("click", event => {
+		event.preventDefault();
+		if (event.target.id.startsWith("delete")) {
+		  const postId = event.target.id.split("__")[1];
+		  deletePost(postId)
+			.then(response => {
+				document.querySelector('.entries').innerHTML = ``
+				EntryListComponent();
+			})
+		}
+	  })
