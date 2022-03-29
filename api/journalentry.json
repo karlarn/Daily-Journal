@@ -28,6 +28,13 @@
       "entry": "I can post and delete stuff now to Edit!",
       "mood": "hungry",
       "id": 3
+    },
+    {
+      "date": "Tue Mar 29 2022",
+      "concept": "think i can edit this?",
+      "entry": "Lets see meow meow",
+      "mood": "tired",
+      "id": 4
     }
   ]
 }
