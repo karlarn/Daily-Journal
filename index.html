@@ -13,32 +13,11 @@
     <header>
         <div class="logo"></div>
         <h1 class="greeting">Daily Journal</h1>
+        <button id="logout">Logout</button>
+        <div class="entryForm"></div>
     </header>
     <main>
-        <form action="description">
-            <fieldset>
-                <label for="conceptscovered">Concepts Covered</label>
-                <textarea name="concepts" id="concepts" cols="60" rows="1"></textarea>
-            </fieldset>
-        </form>
-        <form action="journalentry">
-            <fieldset>
-                <label for="journaltext">Journal Entry</label>
-                <textarea name="text" id="text" cols="120" rows="15"></textarea>
-            </fieldset>
-        </form>
-        <form action="Mood">
-            <fieldset>
-                <label for="moodinput">Mood for the Day</label>
-                <select name="moodinput" id="moodinput">
-                    <option value="happy">Happy</option>
-                    <option value="sad">Sad</option>
-                    <option value="tired">Tired</option>
-                    <option value="hungry">Hungry</option>
-                </select>
-            </fieldset>
-        </form>
-        <button id="savebtn">Record Journal Entry</button>
+        
     </main>
     <aside>
         <h1 class="entrylog">Previous Entries</h1>

@@ -1,5 +1,5 @@
 import { getJournalEntries } from "./journaldata.js"
-import { JournalEntryComponent } from "./journalentry.js"
+import { JournalEntryComponent, entryFormHtml } from "./journalentry.js"
 
 
 export const EntryListComponent = () => {
@@ -10,4 +10,6 @@ export const EntryListComponent = () => {
 })
 }
 
-   
+  export const journalEntryForm=()=>{
+      document.querySelector("main").innerHTML=entryFormHtml()
+  } 

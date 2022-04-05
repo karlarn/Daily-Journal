@@ -3,9 +3,13 @@
     {
       "id": 1,
       "name": "Karl",
-      "email": "squigles@gmail.com"
+      "email": "Karl@email.com"
     },
-    {}
+    {
+      "name": "Greg",
+      "email": "Greg@email.com",
+      "id": 2
+    }
   ],
   "journal": [
     {
@@ -13,28 +17,56 @@
       "concept": "Testing out the functionality",
       "entry": "Will it render?",
       "mood": "tired",
-      "id": 1
+      "id": 1,
+      "userId": 1
     },
     {
       "date": "Mon Mar 21 2022",
       "concept": "Add Another to see ",
       "entry": "Maybe ill start logging actual information XD",
       "mood": "tired",
-      "id": 2
+      "id": 2,
+      "userId": 1
     },
     {
       "date": "Mon Mar 28 2022",
       "concept": "yay! ",
       "entry": "I can post and delete stuff now to Edit!",
       "mood": "hungry",
-      "id": 3
+      "id": 3,
+      "userId": 1
     },
     {
-      "date": "Tue Mar 29 2022",
-      "concept": "think i can edit this?",
-      "entry": "Lets see meow meow",
+      "date": "Thu Mar 31 2022",
+      "concept": "log in ",
+      "entry": "Created a log in element",
       "mood": "tired",
-      "id": 4
+      "id": 4,
+      "userId": 2
+    },
+    {
+      "date": "Mon Apr 04 2022",
+      "concept": "Seeing if api ",
+      "entry": "is working with expanding on the user ",
+      "mood": "sad",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "date": "Mon Apr 04 2022",
+      "concept": "so",
+      "entry": "Many Entries",
+      "mood": "sad",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "date": "Mon Apr 04 2022",
+      "concept": "Trying the ",
+      "entry": "Log out button to make sure it works ",
+      "mood": "sad",
+      "userId": 2,
+      "id": 7
     }
   ]
 }

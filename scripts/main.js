@@ -1,10 +1,11 @@
-import { EntryListComponent } from "./journalentrylists.js";
-import { createPost, getSinglePost, deletePost, updatePost } from "./journaldata.js";
-import { JournalEntryComponent, PostEdit } from "./journalentry.js"
+import { EntryListComponent, journalEntryForm } from "./journalentrylists.js";
+import { setLoggedInUser, registerUser, loginUser, createPost, getSinglePost, deletePost, updatePost, logoutUser, getLoggedInUser } from "./journaldata.js";
+import { PostEdit, cancelEdit } from "./journalentry.js"
 import { dateFormat } from "./helper.js"
+import { LoginForm, RegisterForm } from "./LoginForms.js"
 
 
-EntryListComponent()
+// EntryListComponent()
 
 document.querySelector("main").addEventListener("click", event => {
 	event.preventDefault();
@@ -14,12 +15,14 @@ document.querySelector("main").addEventListener("click", event => {
 	  const date = dateFormat(new Date())
 	  const description = document.querySelector("#text").value
       const mood = document.querySelector("#moodinput").value
+	  const userId=getLoggedInUser().id
 	  //we have not created a user yet - for now, we will hard code `1`.
 	  const postObject = {
 		  date: date,
 		  concept: concepts,
 		  entry: description,
-		  mood: mood
+		  mood: mood,
+		  userId: userId
 	  }
 		createPost(postObject)
 		.then(()=>{
@@ -92,3 +95,87 @@ document.querySelector("main").addEventListener("click", event => {
 	  })
 
 
+	  document.querySelector("main").addEventListener("click", event => {
+		event.preventDefault();
+		if (event.target.id === "newPost__cancel") {
+			document.querySelector("main").innerHTML=cancelEdit()
+		}
+
+	    })
+
+		document.querySelector("header").addEventListener("click", event => {
+			if (event.target.id === "logout") {
+			  logoutUser();
+			  console.log(getLoggedInUser());
+			  sessionStorage.clear();
+			  checkForUser();
+			  document.querySelector(".entries").innerHTML = ""
+			}
+		  })
+
+		  const checkForUser = () => {
+			if (sessionStorage.getItem("user")){
+			  setLoggedInUser(JSON.parse(sessionStorage.getItem("user")));
+			  EntryListComponent()
+			  journalEntryForm()
+			}else {
+				showLoginRegister()
+			  console.log("showLogin")
+			}
+		  }
+
+		  const showLoginRegister = () => {
+			
+			const entryElement = document.querySelector(".entryForm");
+			//template strings can be used here too
+			entryElement.innerHTML = `${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
+			//make sure the post list is cleared out too
+		  const postElement = document.querySelector("main");
+		  postElement.innerHTML = "";
+		  }
+
+		  checkForUser()
+
+
+		  document.querySelector("header").addEventListener("click", event => {
+			event.preventDefault();
+			if (event.target.id === "login__submit") {
+			  //collect all the details into an object
+			  const userObject = {
+				name: document.querySelector("input[name='name']").value,
+				email: document.querySelector("input[name='email']").value
+			  }
+			  loginUser(userObject)
+			  .then(dbUserObj => {
+				if(dbUserObj){
+				  sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+				  document.querySelector(".entryForm").innerHTML=''
+				  EntryListComponent()
+				  journalEntryForm()
+				}else {
+				  //got a false value - no user
+				  const entryElement = document.querySelector(".entryForm");
+				  entryElement.innerHTML = `<p class="center">That user does not exist. Please try again or register for your free account.</p> ${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
+				}
+			  })
+			}
+		  })
+
+
+		  document.querySelector("header").addEventListener("click", event => {
+			event.preventDefault();
+			if (event.target.id === "register__submit") {
+			  //collect all the details into an object
+			  const userObject = {
+				name: document.querySelector("input[name='registerName']").value,
+				email: document.querySelector("input[name='registerEmail']").value
+			  }
+			  registerUser(userObject)
+			  .then(dbUserObj => {
+				sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+				document.querySelector(".entryForm").innerHTML=''
+				EntryListComponent();
+				  journalEntryForm()
+			  })
+			}
+		  })
